@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품 카테고리 정렬</title>
+    <style>
+        .header-text {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            max-width: 800px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .category {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .category-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding-bottom: 10px;
+            width: 100%;
+            max-width: 1200px;
+            scrollbar-width: thin;
+            scrollbar-color: #ccc transparent;
+        }
+
+        .product {
+            position: relative;
+            width: 110px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex: 0 0 auto;
+            overflow: hidden;
+            padding: 5px;
+            border: 2px solid transparent;
+        }
+
+        .product img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .product.empty {
+            visibility: hidden;
+        }
+
+        .product span {
+            display: block;
+            white-space: normal;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            font-size: 12px;
+        }
+
+        /* 클렌징 제품 - 주황색 테두리 */
+        .product.cleansing {
+            border-color: #FFA07A;
+        }
+
+        /* 남성 올인원 제품 - 파란색 테두리 */
+        .product.men-all-in-one {
+            border-color: #87CEFA;
+        }
+
+        /* 클렌징 뱃지 - 이미지 오른쪽 상단에 위치 */
+        .product.cleansing::before {
+            content: "클렌징";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #FFA07A;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 5px;
+            z-index: 10;
+        }
+
+        /* 클렌징 뱃지 - 이미지 오른쪽 상단에 위치 */
+        .product.men-all-in-one::before {
+            content: "남성";
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #87CEFA;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 5px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-text">
+        올리브영 스킨스캔 결과를 기반으로 추천하는 카테고리별 닥터지 제품입니다.<br>
+        각 제품을 클릭하면 해당 제품의 구매 페이지로 이동합니다.
+    </div>
+    <div class="category">
+        <div class="category-title moisture">수분</div>
+        <div class="product-list">
+            <div class="product"><img src="./images/수분_1_세럼.jpeg"><span>레드 블레미쉬 히알 시카 세럼</span></div>
+            <div class="product"><img src="./images/수분_2_크림.jpeg"><span>레드 블레미쉬 수딩 크림</span></div>
+            <div class="product cleansing">
+                <img src="./images/수분_3_클렌징.jpeg">
+                <span>약산성 클렌징 젤 폼</span>
+            </div>
+            <div class="product men-all-in-one"><img src="./images/수분_4_올인원.jpeg"><span>레드 블레미쉬 포 맨 진정 올인원</span></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title pore">모공</div>
+        <div class="product-list">
+            <div class="product"><img src="./images/모공_1_세럼.png"><span>바쿠치올 포어젯 세럼</span></div>
+            <div class="product"><img src="./images/모공_2_크림.jpeg"><span>바쿠치올 포어젯 크림</span></div>
+            <div class="product cleansing">
+                <img src="./images/모공_3_클렌징.jpeg">
+                <span>그린딥 클렌징 오일</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title wrinkle">주름/잡티</div>
+        <div class="product-list">
+            <div class="product"><img src="./images/주름잡티_1.jpeg"><span>블랙 스네일 레티놀 앰플</span></div>
+            <div class="product"><img src="./images/주름잡티_2.jpeg"><span>블랙 스네일 크림</span></div>
+            <div class="product empty"><span></span></div>
+            <div class="product men-all-in-one"><img src="./images/주름잡티_4.jpeg"><span>레드 블레미쉬 포 맨 탄력 올인원</span></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title trouble">피지</div>
+        <div class="product-list">
+            <div class="product"><img src="./images/피지_1_세럼.jpeg"><span>에어클리어 스팟 포 페이스 세럼</span></div>
+            <div class="product empty"><span></span></div>
+            <div class="product cleansing">
+                <img src="./images/피지_3_클렌징.jpeg">
+                <span>그린딥 클렌징 밤</span>
+            </div>
+            <div class="product men-all-in-one"><img src="./images/피지_4_올인원.jpeg"><span>레드 블레미쉬 포 맨 올인원 오일컷</span></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title sensitive">민감도</div>
+        <div class="product-list">
+            <div class="product"><img src="./images/민감_1_로션.jpeg"><span>배리어 D 인텐스 로션</span></div>
+            <div class="product"><img src="./images/민감_2_크림.jpeg"><span>배리어 D 인텐스 크림</span></div>
+            <div class="product cleansing">
+                <div class="badge">클렌징</div>
+                <img src="./images/민감_3_클렌징.jpeg"><span>약산성 클렌징 젤 폼</span></div>
+            <div class="product empty"><span></span></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
